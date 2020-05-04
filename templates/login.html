@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome to the book review page
+{% endblock %}
+
+{% block body %}
+<div cellpadding=5>
+  <div class="container p-3 my-3 bg-dark text-white">
+    <h1>Welcome to the book review page</h1>
+    <p>≈ being project1 in the course ≈</p>
+    <p>Please enter your login credentials or create a new user</p>
+ </div>
+
+
+
+
+
+<div class=container p-3 my-3 border">
+    <div class="row">
+      <div class="col"><font color="red">
+        <p class="font-italic">{{ msg }}</p></font>
+      </div>
+    </div>
+
+<div class="row">
+  <div class="col">
+     <p>Login into your account</p>
+     <form action="/login" method="post">
+
+      <div class="form-group">
+        <label for="sUsername">Username </label>
+        <input type="text" id="sUsername" name="sUsername"  >
+      </div>
+
+      <div class="form-group">
+        <label for="sUsername">Password </label>
+        <input type="password" id="sPassword" name="sPassword"  >
+      </div>
+
+      <input type="submit" value="Login">
+
+     </form>
+</div>
+  <div class="col">
+     <p>Create a new account</p>
+     <form action="/createuser" method="post">
+
+      <div class="form-group">
+        <label for="sUsername">Username </label>
+        <input type="text" id="sUsername" name="sUsername"  >
+      </div>
+
+      <div class="form-group">
+        <label for="sUsername">Password </label>
+        <input type="text" id="sPassword" name="sPassword"  >
+     </div>
+     <div class="form-group">
+        <label for="sUsername">Confirm Password </label>
+        <input type="text" id="sConfirmPassword" name="sConfirmPassword"  >
+      </div>
+
+      <input type="submit" value="Create User">
+      </form>
+   </div>
+</div>
+</div>
+
+
+<hr/>
+
+<table border=1 cellpadding=5>
+    <tr>
+       <th>User</th>
+       <th>User-ID</th>
+    </tr>
+
+{% for u in users %}
+    <tr>
+        <td>{{ u.username }}</td>
+        <td>{{ u.usernr }}</td>
+    </tr>
+{% endfor %}
+
+</table>
+</div>
+{% endblock %}

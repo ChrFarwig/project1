@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container p-3 my-3 bg-dark text-white">
+  <h1>Welcome to the book review page</h1>
+  <p>Error page</p>
+</div>
+
+
+<div class="container" cellpadding=5>
+
+<a href="/" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">Login page</a>
+<table cellpadding=5>
+<tr><th>Project1, error page</th></tr>
+
+<tr><td>Page: {{ page }}</td>
+<td>Errormessage: {{ errorcode }}</td></tr>
+</table>
+</div>
+{% endblock %}

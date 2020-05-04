@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search books in the Database
+{% endblock %}
+
+{% block body %}
+
+<div class="container p-3 my-3 bg-dark text-white">
+  <h1>Welcome to the book review page</h1>
+  <p>Listing of books</p>
+</div>
+
+<div class="container" cellpadding=5>
+
+<a href="/" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">Login page</a>
+<a href="/book_search" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">Book listing</a>
+User-ID: {{ userid }}
+<hr/>
+
+
+<form action="/book_search" method="post">
+    <div class="form-group">
+       <label for="sAuthor">Author:</label>
+       <input type="text" id="sAuthor" name="sAuthor" value="{{sAuthor}}">
+
+       <label for="sTitle">Title:</label>
+       <input type="text" id="sTitle" name="sTitle" value="{{sTitle}}">
+
+
+       <label for="sTitle">ISBN:</label>
+       <input type="text" id="sISBN" name="sISBN" value="{{sISBN}}">
+
+       <input type="submit" value="Search">
+    </div>
+</form>
+
+<hr/>
+
+<table class="table">
+  <tr>
+    <th colspan=2> List of Books in the Database </th>
+    <th>Current selection is author <b>{{sAuthor}}</b>, title <b>{{sTitle}}</b>, ISBN <b>{{sISBN}}</b> </th>
+  </tr>
+  <tr>
+    <th>Book Information </th>
+    <th>ISBN</th>
+  </tr>
+
+{% for book in books %}
+    <tr>
+            <td>
+              <a href="/book_review/{{ book.isbn }}" class="btn btn-secondary btn-sm" tabindex="-1" role="button" aria-disabled="true">Review</a>
+            </td>
+            <td>
+              {{ book.title }}, Author: {{book.author}} ({{book.year}})
+            </td>
+            <td align="left">
+             {{ book.isbn }}
+            </td>
+    </tr>
+{% endfor %}
+</table></div>
+{% endblock %}
